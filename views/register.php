@@ -15,7 +15,6 @@ if(isset($_POST)){
 ?>
 
 <head>
-      <!-- <script src="../register.js" defer></script> -->
     <title>S'enregistrer</title>
 </head>
 

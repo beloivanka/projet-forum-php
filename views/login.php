@@ -14,7 +14,6 @@ if(isset($_POST)){
 ?>
 
 <head>    
-        <!-- <script src="../login.js" defer></script> -->
   <title>Se connecter</title>
 </head>
 
