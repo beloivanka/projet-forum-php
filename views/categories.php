@@ -39,7 +39,7 @@ require_once "../includes/head.php"
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <div class="voir-btn-container">
-            <a id="btn1" class="voir-btn" href="forum-1.php">
+            <a id="btn1" class="voir-btn" href="forumApprendre.php">
               Voir plus
             </a>
           </div>

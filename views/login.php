@@ -7,7 +7,7 @@ $utilisateurController = new UtilisateurController();
 if(isset($_POST)){
   if(isset($_POST['mail'], $_POST['mdp']) && !empty($_POST['mail']) && !empty($_POST['mdp'])){
     $utilisateurController->connectUtilisateur($_POST['mail'], $_POST['mdp']);
-    header('Location: forum.php');
+    //header('Location: categories.php');
   }
 }
 

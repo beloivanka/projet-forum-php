@@ -20,7 +20,7 @@ class UtilisateurService {
 
         if($emailCorrect && $motDePasseCorrect && $confirmMotDePasseCorrect && $motDePasseCorrect == $confirmMotDePasseCorrect){
                 //on crypte le mot de passe
-            $motDePasseEncrypte = password_hash($motDePasseCorrect, PASSWORD_ARGON2ID);
+            $motDePasseEncrypte = password_hash($motDePasseCorrect, PASSWORD_ARGON2I);
                 //on fait la requête
             $this->utilisateurRepository->createUtilisateur($nomNettoye, $prenomNettoye, $mailUtilisateur, $motDePasseEncrypte, $photoUtilisateur);
         }else {
@@ -46,7 +46,7 @@ class UtilisateurService {
 
 public function connectUtilisateur(string $mailUtilisateur, string $mdp): void{
     $mailNettoye = $this->nettoyerDonnees($mailUtilisateur);
-    $this->utilisateurRepository->connectUtilisateur($mailUtilisateur, $mdp);
+    $this->utilisateurRepository->connectUtilisateur($mailNettoye, $mdp);
 }
 
 }

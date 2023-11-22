@@ -27,7 +27,13 @@ class UtilisateurRepository {
         } catch(PDOException $exception){
             $connexion->rollBack();
             echo "Erreur: " . $exception->getMessage();
-        } 
+        } finally {
+            /**
+             * fermer la connexion (a verifier)
+             */
+            $statement = null;
+            $connexion = null;
+        }
     }
 
     public function connectUtilisateur(string $mailUtilisateur, string $mdp){
@@ -40,22 +46,24 @@ class UtilisateurRepository {
             $statement->bindValue(":mail",$mailUtilisateur, PDO::PARAM_STR);
             $statement->execute();
             $result = $statement->fetch(PDO::FETCH_ASSOC);
-            if(!$result){
-                echo "Cet utilisateur n'existe pas";
-                header('Location: ../views/login.php');
-            }
-            if(!$result){
-                return false;
-            }
-            if(!password_verify($mdp, $result["mdpUtilisateur"])){
-                return false;
+            if($result && password_verify($mdp, $result["mdpUtilisateur"])){
+                $utilisateur = new Utilisateur();
+                $utilisateur->setId($result["idUtilisateur"]);
+                $utilisateur->setNomUtilisateur($result["nomUtilisateur"]);
+                header('Location: ../views/categories.php');
+            } else {
+                echo "L'utilisateur n'existe pas";
+                header('Location: ../views/forumApprendre.php');
             }
             $connexion->commit();
-            //header ('Location: ../views/forum.php');
         } catch(PDOException $exception){
             $connexion->rollBack();
             echo "Erreur: " . $exception->getMessage();
         } 
+        finally {
+            $statement = null;
+            $connexion = null;
+        }
     }
 }
 
