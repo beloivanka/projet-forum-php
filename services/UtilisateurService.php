@@ -20,12 +20,13 @@ class UtilisateurService {
 
         if($emailCorrect && $motDePasseCorrect && $confirmMotDePasseCorrect && $motDePasseCorrect == $confirmMotDePasseCorrect){
                 //on crypte le mot de passe
-            $motDePasseEncrypte = password_hash($motDePasseCorrect, PASSWORD_ARGON2I);
+            $motDePasseEncrypte = password_hash($mdpUtilisateur, PASSWORD_BCRYPT);
                 //on fait la requête
             $this->utilisateurRepository->createUtilisateur($nomNettoye, $prenomNettoye, $mailUtilisateur, $motDePasseEncrypte, $photoUtilisateur);
+            //header('Location: login.php');
         }else {
-            echo "Cet utilisateur existe";
-            // header('Location: register.php');
+            echo "Données incorrectes";
+            //header('Location: register.php');
         }
     }
 
@@ -42,12 +43,20 @@ class UtilisateurService {
     $donnees = stripslashes($donnees);
     $donnees = htmlspecialchars($donnees);
     return $donnees;
-}
+    }
 
-public function connectUtilisateur(string $mailUtilisateur, string $mdp): void{
-    $mailNettoye = $this->nettoyerDonnees($mailUtilisateur);
-    $this->utilisateurRepository->connectUtilisateur($mailNettoye, $mdp);
-}
+    public function connectUtilisateur(string $mailUtilisateur, string $mdp): void{
+        $mailNettoye = $this->nettoyerDonnees($mailUtilisateur);
+        $this->utilisateurRepository->connectUtilisateur($mailNettoye, $mdp);
+    }
+
+    public function getUtilisateurByMail(string $mailUtilisateur): void{
+        $this->utilisateurRepository->getUtilisateurByMail($mailUtilisateur);
+    }
+
+    public function deconnecterUtilisateur(){
+        $this->utilisateurRepository->deconnecterUtilisateur();
+    }
 
 }
 

@@ -2,43 +2,69 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+/* Header */
+
+#header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 34px;
+    padding: 6px 10px;
+    background-color: #1E282A;
+}
+
+#header-user-container{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    align-items: center;
+    padding: 6px 10px;
+}
+
+#links-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    margin-left: 30px;
+}
+
+#logo-container{
+    display: flex;
+    align-items: center;
+}
+
 .logo-text {
     font-family: 'Ingrid Darling', cursive;
     color: #CECECE;
     font-size: 32px;
     font-style: normal;
+    text-align: center;
     font-weight: 400;
     line-height: 18px;
 }
 
 .logo-text-link:hover{
     color: white;
+    cursor: pointer;
 }
 
 #logo {
     width: 62px;
 }
 
-#header{
-    display: flex;
-    background-color: #1E282A;
-    justify-content: space-between;
-    align-items: center;
+#user-img{
+    width: 11%;
+    border-radius: 50%;
 }
 
-#link-container{
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin-right: 30px;
+.btn-deconnect{
+    border: none;
+    background: none;
 }
 
-#header-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 6px 10px;
-}
+/* Main Page */
+
 
 #mp-wrapper {
     background-image: url(../img/img1.png);
@@ -82,8 +108,9 @@ h1 {
 a,
 a:visited {
     text-decoration: none;
-    color: white;
 }
+
+/* Register and Login */
 
 #form {
     display: flex;
@@ -175,6 +202,8 @@ line-height: normal;
 .login-container{
     margin: 10% 14% 8% 0;
 }
+
+/* Categories */
 
 #forum-wrapper{
     background-image: url(../img/img4.png);
@@ -272,6 +301,14 @@ line-height: 38px;
     padding: 14% 24%;
 }
 
+/* Add Topic Part */
+
+.topic-content-container{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
 h4{
     font-size: 55px;
     font-style: normal;
@@ -283,38 +320,54 @@ h4{
     padding: 6%;
 }
 
-table, tr, td, th {
+/* table, tr, td, th {
     border: 1px solid #E9E9E9;
     background: rgba(255, 255, 255, 0.5);
 }
 
 .break{
     word-break: break-all;
-}
-.table-container, .ajout-container{
+} */
+.new-topic-container{
     margin: 4%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
+    gap: 10px;
 }
 
-.ajout-container{
+.topic-container{
+    display: flex;
+    border-radius: 20px;
+    border: 1px solid #C0C0C0;
+    background: rgba(255, 255, 255, 0.62);
+    margin: 4%;
     gap: 20px;
+    padding: 20px;
+
 }
 
-th{
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-    padding: 10px;
+.user-topic-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
-td{
-    font-size: 20px;
-    font-weight: 200;
-    text-align: center;
-    padding: 10px;
+#user-img-topic{
+    width: 44%;
+}
+
+.date-text{
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.message{
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 22px;
 }
 
 h5{
@@ -322,11 +375,13 @@ h5{
     font-weight: 400;
 }
 
-.ajout-input{
+
+.message-field{
     background: rgba(255, 255, 255, 0.5);
-    font-size: 20px;
+    font-size: 18px;
     padding: 6px;
     border: 1px solid white;
+    border-radius: 8px;
 }
 
 .ajout-input:focus{
@@ -344,15 +399,6 @@ h5{
     border-radius: 10px;
     color: white;
     font-size: 16px;
-}
-
-#message{
-    margin: 2% 0;
-    border-radius: 12px;
-}
-
-#message-field {
-    margin: 4%;
 }
 
 .th-text{
@@ -430,6 +476,35 @@ h5{
     font-size: 14px;
 }
 
+/* User Account */
+
+#compte-wrapper{
+    background-image: url(../img/img.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 4% 35% 10% 35%;
+}
+
+#compte-container{
+    border-radius: 20px;
+    border: 1px solid #C0C0C0;
+    background: rgba(255, 255, 255, 0.62);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+#compte-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+
+
 @media screen and (max-width: 600px) {
     #mp-wrapper {
         background-image: url(../img/img1-mobile.png);
@@ -496,10 +571,6 @@ h5{
 
     #ajout-container {
         gap: 14px;
-    }
-
-    #table-container{
-        margin: 4% 4% 8% 4%;
     }
 
     .btn-voir{

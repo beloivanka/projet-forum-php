@@ -20,15 +20,19 @@ DROP TABLE IF EXISTS `sujet`;
 CREATE TABLE IF NOT EXISTS `sujet` (
     `idSujet` int NOT NULL AUTO_INCREMENT,
     `titreSujet` longtext NOT NULL,
+    `dateSujet` datetime NOT NULL,
     `idCategorie` int NOT NULL,
+    `idUtilisateur` int NOT NULL,
 PRIMARY KEY (`idSujet`),
-CONSTRAINT `fk_categorie` FOREIGN KEY (`idCategorie`) REFERENCES categorie (`idCategorie`)
+CONSTRAINT `fk_categorie` FOREIGN KEY (`idCategorie`) REFERENCES categorie (`idCategorie`),
+CONSTRAINT `fk_utilisateur` FOREIGN KEY (`idUtilisateur`) REFERENCES utilisateur (`idUtilisateur`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
     `idMessage` int NOT NULL AUTO_INCREMENT,
     `message` longtext NOT NULL,
+    `dateMessage` datetime NOT NULL,
     `idSujet` int NOT NULL,
     `idUtilisateur` int NOT NULL,
 PRIMARY KEY (`idMessage`),

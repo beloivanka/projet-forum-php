@@ -1,5 +1,10 @@
 <?php
-require_once "../includes/head.php"
+require_once "../includes/head.php";
+session_start();
+
+if ($_SESSION == false){
+  header('Location: index.php');
+}
 ?>
 
   <head>
@@ -14,24 +19,27 @@ require_once "../includes/head.php"
       <div id="mobile-container">
         <div id="connect-text-container">
           <p class="connect-text">
-            Bienvenue <span class="connect-text" id="name"></span>
+            Bienvenue <span class="connect-text" id="name">
+              <?php echo $_SESSION["prenom"]?>
+            </span>
           </p>
           <p class="connect-text">
-            Nous sommes le <span class="connect-text" id="day"></span
-            ><span class="connect-text" id="month"></span
-            ><span class="connect-text" id="year"></span>
+            Nous sommes le <span class="connect-text" id="day">
+              <?php echo $_SESSION["dateConnexion"]?>
+          </span>
           </p>
           <p class="connect-text">
             Vous vous êtes connecté à
-            <span class="connect-text" id="heures"></span
-            ><span class="connect-text" id="minutes"></span>
+            <span class="connect-text" id="heures">
+              <?php echo $_SESSION["heureConnexion"]?>
+            </span>
           </p>
         </div>
         <h1 class="forum-title">Découvrez notre forum</h1>
       </div>
       <div id="cards-container">
         <div class="card-container">
-          <img class="img-card" src="img/img-card1.png" alt="" />
+          <img class="img-card" src="../img/img-card1.png" alt="" />
           <h3>Apprendre à jouer</h3>
           <div class="line"></div>
           <p class="text-card">
@@ -45,7 +53,7 @@ require_once "../includes/head.php"
           </div>
         </div>
         <div class="card-container">
-          <img class="img-card" src="img/img-card2.png" alt="" />
+          <img class="img-card" src="../img/img-card2.png" alt="" />
           <h3>Partager les partitions</h3>
           <div class="line"></div>
           <p class="text-card">
@@ -59,7 +67,7 @@ require_once "../includes/head.php"
           </div>
         </div>
         <div class="card-container">
-          <img class="img-card" src="img/img-card3.png" alt="" />
+          <img class="img-card" src="../img/img-card3.png" alt="" />
           <h3>Echanger</h3>
           <div class="line"></div>
           <p class="text-card">

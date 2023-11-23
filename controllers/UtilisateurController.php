@@ -14,6 +14,14 @@ class UtilisateurController {
     public function connectUtilisateur (string $mailUtilisateur, string $mdpUtilisateur): void{
         $this->utilisateurService->connectUtilisateur($mailUtilisateur, $mdpUtilisateur);
     }
+
+    public function getUtilisateurByMail(string $mailUtilisateur): void{
+        $this->utilisateurService->getUtilisateurByMail($mailUtilisateur);
+    }
+
+    public function deconnecterUtilisateur(){
+        $this->utilisateurService->deconnecterUtilisateur();
+    }
 }
 
 

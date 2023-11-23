@@ -1,5 +1,6 @@
 <?php
-require_once "../includes/head.php"
+require_once "../includes/head.php";
+session_start();
 ?>
 
 <head>

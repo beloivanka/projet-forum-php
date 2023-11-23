@@ -7,9 +7,6 @@ email.value = objetUser["nom"];
 const password = document.getElementById("password");
 password.value = objetUser["mdp"];
 
-
-// let email = document.getElementById("email");
-// let password = document.getElementById("password");
 let emailError = document.getElementById("emailError");
 let passwordError = document.getElementById("passwordError");
 let btn = document.getElementById("form");

@@ -1,13 +1,15 @@
 <?php
 require_once "../includes/head.php";
 require_once "../controllers/UtilisateurController.php";
+session_start();
 
 $utilisateurController = new UtilisateurController();
 
+
+
 if(isset($_POST)){
-  if(isset($_POST['mail'], $_POST['mdp']) && !empty($_POST['mail']) && !empty($_POST['mdp'])){
-    $utilisateurController->connectUtilisateur($_POST['mail'], $_POST['mdp']);
-    //header('Location: categories.php');
+  if(isset($_POST['mailLogin'], $_POST['mdpLogin']) && !empty($_POST['mailLogin']) && !empty($_POST['mdpLogin'])){
+    $utilisateurController->connectUtilisateur($_POST['mailLogin'], $_POST['mdpLogin']);
   }
 }
 
@@ -22,8 +24,8 @@ if(isset($_POST)){
 <?php require_once "../includes/header.php"; ?>
 
       <div id="login-wrapper">
-        <img id="img3" src="img/img3.png" alt="">
-        <img id="img3-mobile" src="img/img3-mobile.png" alt="">
+        <img id="img3" src="../img/img3.png" alt="">
+        <img id="img3-mobile" src="../img/img3-mobile.png" alt="">
         <div class="login-container">
           <h2>Se connecter</h2>
           <form id="form" action="#" method="POST">
@@ -31,7 +33,7 @@ if(isset($_POST)){
               <input
                 class="input-style"
                 type="text"
-                name="mail"
+                name="mailLogin"
                 id="email"
                 placeholder="Votre E-mail"
               />
@@ -41,7 +43,7 @@ if(isset($_POST)){
                 class="input-style"
                 type="password"
                 minlength="8"
-                name="mdp"
+                name="mdpLogin"
                 id="password"
                 placeholder="Votre mot de passe"
               />
