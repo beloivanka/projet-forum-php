@@ -7,7 +7,7 @@ session_start();
 $sujetController = new SujetController();
 $sujet = $sujetController->getSujetById($_GET['id']);
 $messageController = new MessageController();
-$messages = $messageController->getMessages();
+$messages = $messageController->getMessages($_GET['id']);
 //$createMessage = $messageController->getMessages();
 
 if ($_SESSION == false) {

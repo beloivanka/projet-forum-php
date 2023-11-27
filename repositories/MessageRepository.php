@@ -44,13 +44,14 @@ class MessageRepository {
         }
         }
 
-    public function getMessages(): array | null{
+    public function getMessages(int $id): array | null{
         $connexion = null;
         try {
             $connexion = $this->pdo->connectDB();
             $connexion->beginTransaction();
-            $query = "SELECT * FROM message";
+            $query = "SELECT * FROM `message` WHERE idSujet = :id";
             $statement = $connexion->prepare($query);
+            $statement->bindValue(":id",$id, PDO::PARAM_INT);
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_ASSOC);
             if (!$results) {

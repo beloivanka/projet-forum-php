@@ -11,8 +11,8 @@ class MessageController {
         $this->messageService->createMessage($message, $idUtilisateur, $idSujet);
     }
 
-    public function getMessages(): array | null{
-        return $this->messageService->getMessages();
+    public function getMessages(int $id): array | null{
+        return $this->messageService->getMessages($id);
     }
 
     public function deleteMessage(int $id): void{
