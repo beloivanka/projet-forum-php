@@ -33,9 +33,6 @@ class UtilisateurRepository
                 echo "Erreur: " . $exception->getMessage();
                 header('Location: register.php');
             } finally {
-                /**
-                 * fermer la connexion (a verifier)
-                 */
                 $statement = null;
                 $connexion = null;
             }
@@ -57,6 +54,42 @@ class UtilisateurRepository
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             if (!$result) {
                 echo "C'est bon, cet utilisateur n'existe pas, on va le creer";
+                return null;
+                // header('Location: categories.php');
+            } else {
+                $utilisateur = new Utilisateur();
+                $utilisateur->setId($result['idUtilisateur']);
+                $utilisateur->setPrenomUtilisateur($result['prenomUtilisateur']);
+                $utilisateur->setNomUtilisateur($result['nomUtilisateur']);
+                $utilisateur->setMailUtilisateur($result['mailUtilisateur']);
+                $utilisateur->setMdpUtilisateur($result['mdpUtilisateur']);
+                $utilisateur->setPhotoUtilisateur($result['photoUtilisateur']);
+                $connexion->commit();
+            }
+            
+        } catch (PDOException $exception) {
+            $connexion->rollBack();
+            echo "Erreur: " . $exception->getMessage();
+        } finally {
+            $statement = null;
+            $connexion = null;
+        }
+        return $utilisateur;
+    }
+
+    public function getUtilisateurById(int $idUtilisateur): Utilisateur | null{
+        $connexion = null;
+        $utilisateur = null;
+        try {
+            $connexion = $this->pdo->connectDB();
+            $connexion->beginTransaction();
+            $query = "SELECT * FROM `utilisateur` WHERE idUtilisateur = :id";
+            $statement = $connexion->prepare($query);
+            $statement->bindValue(":id", $idUtilisateur, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            if (!$result) {
+                echo "Cet utilisateur n'existe pas";
                 return null;
                 // header('Location: categories.php');
             } else {
@@ -129,9 +162,6 @@ class UtilisateurRepository
         $_SESSION["photo"] = $utilisateur->getPhotoUtilisateur();
         $_SESSION["dateConnexion"] = date("d.m.y");
         $_SESSION["heureConnexion"] = $heure->format("H:i");
-
-        //$_SESSION["sujet"] = "";
-        //$_SESSION["message"] = "";
     }
 
     public function deconnecterUtilisateur(){

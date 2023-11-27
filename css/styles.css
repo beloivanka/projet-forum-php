@@ -353,10 +353,28 @@ h4{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    gap: 20px;
 }
 
 #user-img-topic{
-    width: 44%;
+    width: 105px;
+}
+
+.link-topic-style,
+.topic-style{
+    color: #1E282A;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.link-topic-style:visited{
+    color: #1E282A;
+}
+
+.link-topic-style:hover{
+    text-decoration: underline;
 }
 
 .date-text{
@@ -399,13 +417,6 @@ h5{
     border-radius: 10px;
     color: white;
     font-size: 16px;
-}
-
-.th-text{
-    font-size: 20px;
-    font-weight: 200;
-    text-align: center;
-    padding: 10px;
 }
 
 .btn-voir{

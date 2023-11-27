@@ -3,6 +3,7 @@
 class Message {
     private int $id;
     private string $message;
+    private string $dateMessage;
     private Utilisateur $utilisateur;
     private Sujet $sujet;
 
@@ -18,6 +19,14 @@ class Message {
 
     public function setMessage(string $message): void {
         $this->message = $message;
+    }
+
+    public function getDateMessage(): string {
+        return $this->dateMessage;
+    }
+
+    public function setDateMessage(string $dateMessage): void {
+        $this->dateMessage = $dateMessage;
     }
 
     public function getUtilisateur(): Utilisateur {

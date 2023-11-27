@@ -14,7 +14,7 @@ class PDOManager {
 
         try{
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Vous êtes connecté à la BDD ".$this->bdd;
+            //echo "Vous êtes connecté à la BDD ".$this->bdd;
             return $connexion;
         }
 

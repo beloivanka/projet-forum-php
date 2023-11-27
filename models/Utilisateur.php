@@ -7,6 +7,7 @@ class Utilisateur {
     private string $mail; 
     private string $mdp; 
     private string $photo; 
+    private $sujets = [];
 
     public function getId(): int {
         return $this->id;
@@ -48,5 +49,12 @@ class Utilisateur {
     public function setPhotoUtilisateur(string $photo): void {
         $this->photo = $photo;
     }
+
+    public function getSujets(): array {
+        return $this->sujets;
+    }
+    public function setSujets(array $sujets): void {
+        $this->sujets = $sujets;
+    }  
 }
 ?>

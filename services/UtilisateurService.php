@@ -50,8 +50,12 @@ class UtilisateurService {
         $this->utilisateurRepository->connectUtilisateur($mailNettoye, $mdp);
     }
 
-    public function getUtilisateurByMail(string $mailUtilisateur): void{
-        $this->utilisateurRepository->getUtilisateurByMail($mailUtilisateur);
+    public function getUtilisateurByMail(string $mailUtilisateur): Utilisateur | null{
+       return $this->utilisateurRepository->getUtilisateurByMail($mailUtilisateur);
+    }
+
+    public function getUtilisateurById(string $idUtilisateur): void{
+        $this->utilisateurRepository->getUtilisateurById($idUtilisateur);
     }
 
     public function deconnecterUtilisateur(){
