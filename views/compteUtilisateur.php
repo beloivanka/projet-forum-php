@@ -1,10 +1,20 @@
 <?php
 require_once "../includes/head.php";
+require_once "../controllers/UtilisateurController.php";
 session_start();
 
 if ($_SESSION == false) {
     header('Location: index.php');
 }
+
+$utilisateurController = new UtilisateurController();
+
+if (isset($_POST['deleteAccount'])) {
+    $utilisateurController->deleteAccount($_SESSION['id']);
+    $utilisateurController->deconnecterUtilisateur();
+    header('index.php');
+}
+
 ?>
 
 <head>
@@ -27,6 +37,9 @@ if ($_SESSION == false) {
             <p>
                 <?php echo $_SESSION ? $_SESSION["mail"] : "" ?>
             </p>
+            <form method='POST' action=#>
+                <button type='submit' name='deleteAccount'>Supprimer le compte</button>
+            </form>
         </div>
     </section>
 </body>

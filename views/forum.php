@@ -72,22 +72,27 @@ if(isset($_POST)){
                     foreach ($sujets as $sujet){
                         echo 
                         "<section class='topic-container'>
-                        <div class='user-topic-container'>
-                            <img id='user-img-topic' src='../img/".$sujet->getUtilisateur()->getPhotoUtilisateur()."' alt=''>
-                            <p>".$sujet->getUtilisateur()->getPrenomUtilisateur()."</p>
-                        </div>
+                        <div class='user-topic-container'>";
+                        if($sujet->getUtilisateur() == null){
+                          echo "<img id='user-img-topic' src='../img/deleted-user.png' alt=''>
+                            <p>DELETED USER</p>";
+                        }else{
+                            echo "<img id='user-img-topic' src='../img/".$sujet->getUtilisateur()->getPhotoUtilisateur()."' alt=''>
+                            <p>".$sujet->getUtilisateur()->getPrenomUtilisateur()."</p>";
+                        }
+                        echo "</div>
                         <div class='topic-content-container'>
                             <a class='link-topic-style' href='tchat.php?id=".$sujet->getId()."' >".$sujet->getTitreSujet()."</a>
                             <p class='date-text'>Sujet publié le ".$sujet->getDateSujet()."</p>
                             <p class='message'>".$sujet->getMessageSujet()."</p>";
-                            if($_SESSION['id'] === $sujet->getUtilisateur()->getId()){
-                               echo "<form method='POST' action=#>
-                                   <input type='hidden' name='idSujet' value='".$sujet->getId()."'/>
-                                   <button type='submit' name='deleteSujet'>Supprimer</button>
-                               </form>";
-                            }
-                       echo "</div>
-                        </section>";
+                            if($sujet->getUtilisateur() !== null){
+                                echo "<form method='POST' action=#>
+                                        <input type='hidden' name='idSujet' value='".$sujet->getId()."'/>
+                                        <button type='submit' name='deleteSujet'>Supprimer</button>
+                                    </form>";
+                            } 
+                            echo "</div>
+                            </section>";
                        } 
                 }
                 ?>

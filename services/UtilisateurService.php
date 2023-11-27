@@ -62,6 +62,10 @@ class UtilisateurService {
         $this->utilisateurRepository->deconnecterUtilisateur();
     }
 
+    public function deleteAccount(int $idUtilisateur): void{
+        $this->utilisateurRepository->deleteAccount($idUtilisateur);
+    }
+
 }
 
 ?>

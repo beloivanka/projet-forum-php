@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `sujet` (
     `messageSujet` varchar(255) NOT NULL,
     `dateSujet` datetime NOT NULL,
     `idCategorie` int NOT NULL,
-    `idUtilisateur` int NOT NULL,
+    `idUtilisateur` int NULL,
 PRIMARY KEY (`idSujet`),
 CONSTRAINT `fk_categorie` FOREIGN KEY (`idCategorie`) REFERENCES categorie (`idCategorie`),
 CONSTRAINT `fk_utilisateur` FOREIGN KEY (`idUtilisateur`) REFERENCES utilisateur (`idUtilisateur`)
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `message` (
     `message` varchar(255) NOT NULL,
     `dateMessage` datetime NOT NULL,
     `idSujet` int NOT NULL,
-    `idUtilisateur` int NOT NULL,
+    `idUtilisateur` int NULL,
 PRIMARY KEY (`idMessage`),
 CONSTRAINT `fk_sujet` FOREIGN KEY (`idSujet`) REFERENCES sujet (`idSujet`),
 CONSTRAINT `fk_utilisateur` FOREIGN KEY (`idUtilisateur`) REFERENCES utilisateur (`idUtilisateur`)

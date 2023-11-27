@@ -8,7 +8,6 @@ $sujetController = new SujetController();
 $sujet = $sujetController->getSujetById($_GET['id']);
 $messageController = new MessageController();
 $messages = $messageController->getMessages($_GET['id']);
-//$createMessage = $messageController->getMessages();
 
 if ($_SESSION == false) {
   header('Location: index.php');
@@ -45,10 +44,16 @@ if(isset($_POST)){
   <div id="background">
     <?php echo
       "<section class='topic-container'>
-          <div class='user-topic-container'>
-            <img id='user-img-topic' src='../img/" . $sujet->getUtilisateur()->getPhotoUtilisateur() . "' alt=''>
-            <p>" . $sujet->getUtilisateur()->getPrenomUtilisateur() . "</p>
-          </div>
+          <div class='user-topic-container'>";
+          if($sujet->getUtilisateur() == null){
+            echo "<img id='user-img-topic' src='../img/deleted-user.png' alt=''>
+              <p>DELETED USER</p>";
+          }else{
+              echo "<img id='user-img-topic' src='../img/".$sujet->getUtilisateur()->getPhotoUtilisateur()."' alt=''>
+              <p>".$sujet->getUtilisateur()->getPrenomUtilisateur()."</p>";
+          };
+          echo
+          "</div>
           <div class='topic-content-container'>
             <p class='topic-style'>" . $sujet->getTitreSujet() . "</p>
             <p class='date-text'>Sujet publié le " . $sujet->getDateSujet() . "</p>
@@ -59,10 +64,16 @@ if(isset($_POST)){
           foreach ($messages as $message){
             echo
             "<section class='topic-container'>
-            <div class='user-topic-container'>
-              <img id='user-img-topic' src='../img/" . $message->getUtilisateur()->getPhotoUtilisateur() . "' alt=''>
-              <p>" . $message->getUtilisateur()->getPrenomUtilisateur() . "</p>
-            </div>
+            <div class='user-topic-container'>";
+            if ($message->getUtilisateur() == null){
+              echo "<img id='user-img-topic' src='../img/deleted-user.png' alt=''>
+              <p>DELETED USER</p>";
+            }else{
+              echo "<img id='user-img-topic' src='../img/".$message->getUtilisateur()->getPhotoUtilisateur()."' alt=''>
+              <p>".$message->getUtilisateur()->getPrenomUtilisateur()."</p>";
+            }
+            echo
+            "</div>
             <div class='topic-content-container'>
               <p class='date-text'>Message publié le " . $message->getDateMessage() . "</p>
               <p class='message'>" . $message->getMessage() . "</p>";

@@ -26,5 +26,9 @@ class UtilisateurController {
     public function deconnecterUtilisateur(){
         $this->utilisateurService->deconnecterUtilisateur();
     }
+
+    public function deleteAccount(string $idUtilisateur): void {
+        $this->utilisateurService->deleteAccount($idUtilisateur);
+    }
 }
 ?>

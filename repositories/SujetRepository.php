@@ -71,7 +71,11 @@ public function createSujet(string $titreSujet, string $messageSujet, int $idUti
                 $categorie = $this->categorieRepository->getCategorieById($result["idCategorie"]);
                 $sujet->setCategorie($categorie);
                 $utilisateur = $this->utilisateurRepository->getUtilisateurById($result["idUtilisateur"]);
-                $sujet->setUtilisateur($utilisateur);
+                if(is_null($utilisateur)) {
+                    $sujet->setUtilisateur(null);
+                }else{
+                    $sujet->setUtilisateur($utilisateur);
+                }
             }
             $connexion->commit();
         }catch(PDOException $exception) {

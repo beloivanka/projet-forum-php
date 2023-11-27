@@ -169,6 +169,21 @@ class UtilisateurRepository
        session_destroy();
        header('Location: ../views/index.php');
     }
-}
 
+    public function deleteAccount(int $id): void{
+        $connexion = null;
+        try {
+            $connexion = $this->pdo->connectDB();
+            $connexion->beginTransaction();
+            $query = "DELETE FROM `utilisateur` WHERE idUtilisateur = :id";
+            $statement = $connexion->prepare($query);
+            $statement->bindValue(":id",$id, PDO::PARAM_INT);
+            $statement->execute();
+            $connexion->commit();
+        } catch(PDOException $exception){
+            $connexion->rollBack();
+            echo "Erreur: " . $exception->getMessage();
+        } 
+    }
+}    
 ?>

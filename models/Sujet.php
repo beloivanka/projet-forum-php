@@ -9,7 +9,7 @@ class Sujet {
 
     private Categorie $categorie;
 
-    private Utilisateur $utilisateur;
+    private ?Utilisateur $utilisateur;
 
     public function getId(): int {
         return $this->id;
@@ -49,11 +49,11 @@ class Sujet {
         $this->categorie = $categorie;
     }
 
-    public function getUtilisateur(): Utilisateur {
+    public function getUtilisateur(): ?Utilisateur {
         return $this->utilisateur;
     }
 
-    public function setUtilisateur(Utilisateur $utilisateur): void {
+    public function setUtilisateur(?Utilisateur $utilisateur): void {
         $this->utilisateur = $utilisateur;
     }
 
